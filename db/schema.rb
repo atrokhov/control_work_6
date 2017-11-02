@@ -10,26 +10,40 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171028061859) do
+ActiveRecord::Schema.define(version: 20171028113102) do
 
   create_table "comments", force: :cascade do |t|
     t.integer "user_id"
     t.integer "score_id"
     t.text "text"
+    t.integer "picture_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["picture_id"], name: "index_comments_on_picture_id"
     t.index ["score_id"], name: "index_comments_on_score_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "picture1s", force: :cascade do |t|
+    t.string "title"
+    t.integer "user_id"
+    t.integer "score_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["score_id"], name: "index_picture1s_on_score_id"
+    t.index ["user_id"], name: "index_picture1s_on_user_id"
   end
 
   create_table "pictures", force: :cascade do |t|
     t.string "title"
     t.integer "user_id"
-    t.integer "comment_id"
     t.integer "score_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["comment_id"], name: "index_pictures_on_comment_id"
+    t.string "image_file_name"
+    t.string "image_content_type"
+    t.integer "image_file_size"
+    t.datetime "image_updated_at"
     t.index ["score_id"], name: "index_pictures_on_score_id"
     t.index ["user_id"], name: "index_pictures_on_user_id"
   end

@@ -4,8 +4,10 @@ one:
   user: one
   score: one
   text: MyText
+  picture: one
 
 two:
   user: two
   score: two
   text: MyText
+  picture: two

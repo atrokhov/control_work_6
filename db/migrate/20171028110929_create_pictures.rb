@@ -1,9 +1,9 @@
-class CreateComments < ActiveRecord::Migration[5.1]
+class CreatePictures < ActiveRecord::Migration[5.1]
   def change
-    create_table :comments do |t|
+    create_table :pictures do |t|
+      t.string :title
       t.references :user, foreign_key: true
       t.references :score, foreign_key: true
-      t.text :text
 
       t.timestamps
     end
